@@ -1,5 +1,5 @@
 <template>
-  <div class="header sticky">
+  <div :class="classObject">
     <Links />
   </div>
 </template>
@@ -11,6 +11,25 @@ export default {
   name: 'Header',
   components: {
     Links
+  },
+  data: function () {
+    return {
+      classObject: {
+        header: true,
+        sticky: false
+      }
+    }
+  },
+  mounted: function () {
+    this.bindScrollEvent()
+  },
+  methods: {
+    bindScrollEvent: function () {
+      const self = this
+      window.onscroll = function () {
+        self.classObject.sticky = window.pageYOffset > self.$el.offsetHeight
+      }
+    }
   }
 }
 </script>
@@ -20,11 +39,10 @@ export default {
     background #42b983
     padding 1.5rem
     color #fff
-    position absolute
-    left 0
-    right 0
-    top: 0
     &.sticky
       position fixed
+      left 0
+      right 0
+      top: 0
       z-index 2
 </style>

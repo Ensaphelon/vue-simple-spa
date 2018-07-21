@@ -26,9 +26,6 @@ html {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   font-size: 1.4rem;
 }
-.content {
-  margin-top: 4.4rem;
-}
 .p-15 {
   padding: 1.5rem;
 }
